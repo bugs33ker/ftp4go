@@ -91,7 +91,7 @@ func init() {
 // Dial connects to the given address on the given network using net.Dial
 // and then returns a new Conn for the connection.
 func Dial(network, addr string) (net.Conn, error) {
-	c, err := net.Dial(network, addr)
+	c, err := net.DialTimeout(network, addr,time.Second * 30)
 	if err != nil {
 		return nil, err
 	}
